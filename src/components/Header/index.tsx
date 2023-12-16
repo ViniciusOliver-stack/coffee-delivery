@@ -1,23 +1,34 @@
-import logo from '../../assets/logo.svg'
-import mapPin from '../../assets/mapPin.svg'
-import shoppingCart from '../../assets/shopping-cart.svg'
+import { ShoppingCart, Timer, Package,Coffee } from "@phosphor-icons/react";
+import { Benefits } from "../Benefits";
+import banner from '../../assets/banner.svg'
 
 export function Header() {
     return(
-        <header className='flex items-center justify-between'>
-            <img src={logo} alt="Coffee Delivery" />
+        <div className="mt-24 flex flex-col items-center justify-between lg:flex-row">
+            <div className="max-w-[620px]">
+                <div className="flex flex-col gap-4">                
+                    <h2 className="text-5xl font-extrabold text-base-title">Encontre o café perfeito para qualquer hora do dia</h2>
+                    <p className="text-xl font-normal text-base-subtitle">Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora.</p>
+                </div>
 
-            <div className='flex items-center gap-3'>
-                <div className='bg-purple-light rounded-md inline-flex items-center gap-2 p-2'>
-                <img src={mapPin} alt='Localização'/>
-                <p className='text-purple-dark'>Poções, BA</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 mt-16">
+                    <div className="flex flex-col gap-5">
+                        <Benefits title="Compra simples e segura" icon={<ShoppingCart size={16} color="#fff" weight="fill" />} color="bg-yellow-dark"/>
+
+                        <Benefits title="Compra simples e segura" icon={<Timer size={16} color="#fff" weight="fill" />} color="bg-yellow"/>
+                    </div>
+
+                    <div className="flex flex-col gap-5 mt-5 md:mt-0">
+                        <Benefits title="Compra simples e segura" icon={<Package size={16} color="#fff" weight="fill" />} color="bg-base-text"/>
+
+                        <Benefits title="Compra simples e segura" icon={<Coffee size={16} color="#fff" weight="fill" />} color="bg-purple"/>
+                    </div>
                 </div>
-                <div>
-                    <button className='bg-yellow-light p-2 rounded-md'>
-                        <img src={shoppingCart} alt="Carrinho de compra" />
-                    </button>
-                </div>
+
             </div>
-        </header>
+            <div className="hidden md:block">
+                <img src={banner} alt="" />
+            </div>
+        </div>
     )
 }
