@@ -1,15 +1,12 @@
-import { Header } from "./components/Header"
-import { Navbar } from "./components/Navbar"
-import { Coffee } from './components/Coffee'
+import { BrowserRouter } from "react-router-dom"
+import { Router } from "./Router"
 
 function App() {
 
   return (
-    <div className="px-8 md:px-28 lg:px-[160px] py-[32px]">
-      <Navbar/>
-      <Header/>
-      <Coffee/>
-    </div>
+    <BrowserRouter>
+      <Router/>
+    </BrowserRouter>
   )
 }
 
