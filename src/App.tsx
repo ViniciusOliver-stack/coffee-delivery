@@ -4,11 +4,10 @@ import { CoffeeContext } from "./hook/CoffeeContext"
 import { listCoffee } from "./utils/listCoffee"
 
 function App() {
-
   return (
     <BrowserRouter>
-      <CoffeeContext.Provider value={{coffeeList: listCoffee}}>
-        <Router/>
+      <CoffeeContext.Provider value={{ coffeeList: listCoffee }}>
+        <Router />
       </CoffeeContext.Provider>
     </BrowserRouter>
   )
