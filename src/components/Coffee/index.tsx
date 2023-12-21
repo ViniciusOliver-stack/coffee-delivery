@@ -7,10 +7,6 @@ export function Coffee() {
 
             <div className='flex flex-wrap gap-6 items-center justify-center mb-8'>
                 <CoffeeCard/>
-                <CoffeeCard/>
-                <CoffeeCard/>
-                <CoffeeCard/>
-                <CoffeeCard/>
             </div>
         </div>
     )
