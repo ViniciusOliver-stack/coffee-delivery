@@ -94,7 +94,7 @@ export function Checkout() {
 
         <div className="bg-base-card rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] p-10 mt-4">
           <div>
-            <div className="flex justify-between">
+            <div className="flex justify-between flex-wrap">
               <div className="flex items-center justify-between gap-5">
                 <img
                   src="https://i.imgur.com/GesgK2k.png"
@@ -156,15 +156,9 @@ export function Checkout() {
             </div>
           </div>
 
-          <div className="relative">
-            <button className="w-full px-2 py-3 bg-yellow rounded-md text-white uppercase font-bold mt-6 ">
-              Confirmar pedido
-            </button>
-            <div className="relative flex h-4 w-4 left-[335px] -top-[55px]">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple opacity-75"></span>
-              <span className="absolute inline-flex rounded-full h-4 w-4 bg-purple-dark"></span>
-            </div>
-          </div>
+          <button className="w-full px-2 py-3 bg-yellow rounded-md text-white uppercase font-bold mt-6 ">
+            Confirmar pedido
+          </button>
         </div>
       </div>
     </div>
