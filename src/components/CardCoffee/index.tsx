@@ -1,17 +1,59 @@
 import { Minus, Plus, ShoppingCartSimple } from "@phosphor-icons/react"
 import { useCoffee } from "../../hook/CoffeeContext"
+import { useState } from "react"
+import toast, { Toaster } from "react-hot-toast"
 
 export function CoffeeCard() {
   const { coffeeList } = useCoffee()
+  const [amountItems, setAmountItens] = useState<{ [key: string]: number }>({})
+
+  function incrementAmount(coffeeId: string) {
+    const currentAmount = amountItems[coffeeId] || 0
+
+    if (currentAmount < 10) {
+      setAmountItens((prevAmountItems) => ({
+        ...prevAmountItems,
+        [coffeeId]: currentAmount + 1,
+      }))
+    } else {
+      toast.error("Você não pode adicionar mais de 10 cafés.", {
+        style: {
+          borderRadius: "10px",
+          background: "#fff",
+          color: "#121212",
+          padding: "16px",
+          boxShadow: "none",
+          border: "1px solid #ccc",
+        },
+        iconTheme: {
+          primary: "red",
+          secondary: "white",
+        },
+      })
+    }
+  }
+
+  function decrementAmount(coffeeId: string) {
+    setAmountItens((prevAmountItems) => ({
+      ...prevAmountItems,
+      [coffeeId]: Math.max((prevAmountItems[coffeeId] || 0) - 1, 0),
+    }))
+  }
 
   return (
     <>
       {coffeeList.map((coffee) => {
+        const coffeeId = coffee.id
+
         return (
           <div
             className="bg-base-card w-[256px] h-[310px] rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] flex flex-col items-center justify-center p-5 mt-14 relative"
             key={coffee.id}
           >
+            <div>
+              <Toaster />
+            </div>
+
             <div className="relative -top-10 flex items-center flex-col gap-4">
               <img src={coffee.image} alt={`Foto do café ${coffee.name}`} />
 
@@ -46,11 +88,11 @@ export function CoffeeCard() {
               </div>
               <div className="flex items-center gap-2">
                 <div className="bg-base-button rounded-md inline-flex p-2 gap-2">
-                  <button>
+                  <button onClick={() => decrementAmount(coffeeId)}>
                     <Minus size={14} className="text-purple" />
                   </button>
-                  <p>1</p>
-                  <button>
+                  <p>{amountItems[coffeeId] || 0}</p>
+                  <button onClick={() => incrementAmount(coffeeId)}>
                     <Plus size={14} className="text-purple" />
                   </button>
                 </div>
