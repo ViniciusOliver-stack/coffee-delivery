@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import logo from "../../assets/logo.svg"
 import mapPin from "../../assets/mapPin.svg"
 import shoppingCart from "../../assets/shopping-cart.svg"
@@ -12,10 +13,14 @@ export function Navbar() {
           <img src={mapPin} alt="Localização" />
           <p className="text-purple-dark">Poções, BA</p>
         </div>
-        <div>
-          <button className="bg-yellow-light p-2 rounded-md">
-            <img src={shoppingCart} alt="Carrinho de compra" />
-          </button>
+
+        <div className="bg-yellow-light p-2 h-[40px] rounded-md relative">
+          <Link to="/checkout">
+            <img src={shoppingCart} alt="" />
+          </Link>
+          <span className="absolute top-0 left-8 transform -translate-y-1/2 w-5 h-5 bg-yellow-dark rounded-full text-xs font-medium text-white flex items-center justify-center">
+            10
+          </span>
         </div>
       </div>
     </header>
