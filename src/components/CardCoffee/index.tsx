@@ -4,7 +4,7 @@ import { useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
 
 export function CoffeeCard() {
-  const { coffeeList } = useCoffee()
+  const { coffeeList, addToCart } = useCoffee()
   const [amountItems, setAmountItens] = useState<{ [key: string]: number }>({})
 
   function incrementAmount(coffeeId: string) {
@@ -18,16 +18,8 @@ export function CoffeeCard() {
     } else {
       toast.error("Você não pode adicionar mais de 10 cafés.", {
         style: {
-          borderRadius: "10px",
-          background: "#fff",
-          color: "#121212",
-          padding: "16px",
           boxShadow: "none",
           border: "1px solid #ccc",
-        },
-        iconTheme: {
-          primary: "red",
-          secondary: "white",
         },
       })
     }
@@ -96,7 +88,19 @@ export function CoffeeCard() {
                     <Plus size={14} className="text-purple" />
                   </button>
                 </div>
-                <button className="bg-purple p-2 rounded-md hover:bg-purple/90 transition-all duration-100">
+                <button
+                  className="bg-purple p-2 rounded-md hover:bg-purple/90 transition-all duration-100"
+                  onClick={() => {
+                    addToCart(coffeeId)
+                    toast.success("Café adicionado ao carrinho!", {
+                      style: {
+                        boxShadow: "none",
+                        border: "1px solid #ccc",
+                        padding: "1rem",
+                      },
+                    })
+                  }}
+                >
                   <ShoppingCartSimple size={22} color="#F3F2F2" weight="fill" />
                 </button>
               </div>
